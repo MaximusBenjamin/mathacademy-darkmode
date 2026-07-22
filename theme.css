@@ -275,3 +275,35 @@ html:not([data-mam-off]) option {
   background-color: var(--ctp-mantle) !important;
   color: var(--ctp-text) !important;
 }
+
+/* ------------------------------------------- hover popups, menus, dialogs */
+
+html:not([data-mam-off]) #sequenceUnits,
+html:not([data-mam-off]) #progressDetails,
+html:not([data-mam-off]) #estimatedCompletionDetails,
+html:not([data-mam-off]) #helpMenu,
+html:not([data-mam-off]) #graph,
+html:not([data-mam-off]) #flagContentDialog,
+html:not([data-mam-off]) #supportDialog,
+html:not([data-mam-off]) #xpGoalsDialog,
+html:not([data-mam-off]) #courseDialog {
+  background-color: var(--ctp-mantle) !important;
+  border-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) #sequenceUnits td,
+html:not([data-mam-off]) #progressDetails td,
+html:not([data-mam-off]) #estimatedCompletionDetails td {
+  background-color: transparent !important;
+}
+
+html:not([data-mam-off]) .helpMenu-item,
+html:not([data-mam-off]) div[id$="-cancelButton"] {
+  background-color: var(--ctp-mantle) !important;
+  color: var(--ctp-text) !important;
+}
+
+html:not([data-mam-off]) .helpMenu-item:hover,
+html:not([data-mam-off]) div[id$="-cancelButton"]:hover {
+  background-color: var(--ctp-surface0) !important;
+}

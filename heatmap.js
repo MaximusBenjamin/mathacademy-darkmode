@@ -127,7 +127,8 @@
     var fresh = {};
 
     for (var page = 0; page < MAX_PAGES; page++) {
-      var url = '/api/previous-tasks/' + encodeURIComponent(cursor.toString());
+      // ?minumum=200 (their spelling) raises the page size from 25 → ~8x fewer requests.
+      var url = '/api/previous-tasks/' + encodeURIComponent(cursor.toString()) + '?minumum=200';
       var res = await fetch(url, { credentials: 'include' });
       if (!res.ok) throw new Error('previous-tasks request failed: ' + res.status);
       var items = await res.json();
