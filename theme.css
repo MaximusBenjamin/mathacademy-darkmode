@@ -616,3 +616,63 @@ html:not([data-mam-off]) span[style*="color: red"],
 html:not([data-mam-off]) div[style*="color: red"] {
   color: var(--ctp-red) !important;
 }
+
+/* --------------------------------------------- math input (MathQuill) */
+
+/* MathQuill draws radicals/brackets from Symbola glyphs with exact metrics;
+ * the site-wide Inter override broke them. Restore its font stack. */
+html:not([data-mam-off]) .mq-math-mode,
+html:not([data-mam-off]) .mq-math-mode span,
+html:not([data-mam-off]) .mq-math-mode div {
+  font-family: Symbola, "Times New Roman", serif !important;
+}
+
+html:not([data-mam-off]) .mq-editable-field {
+  background: transparent !important;
+  border-color: var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) .mq-editable-field.mq-focused {
+  border-color: var(--ctp-blue) !important;
+  box-shadow: none !important;
+}
+
+html:not([data-mam-off]) .mq-editable-field .mq-cursor {
+  border-left-color: var(--ctp-text) !important;
+}
+
+/* Empty slots (e.g. under a radical) shipped as #ccc boxes. */
+html:not([data-mam-off]) .mq-math-mode .mq-empty {
+  background: var(--ctp-surface2) !important;
+}
+
+html:not([data-mam-off]) .mq-math-mode .mq-empty.mq-root-block {
+  background: transparent !important;
+}
+
+/* Symbol toolbox popup */
+html:not([data-mam-off]) #mathEditorToolbox {
+  background-color: var(--ctp-mantle) !important;
+  border-color: var(--ctp-surface0) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Icon sprite has black glyphs: invert to light, screen-blend any white
+ * sprite background away (same trick as the lesson graphics). */
+html:not([data-mam-off]) div.mathIcon {
+  border-color: transparent !important;
+  border-radius: 4px;
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+}
+
+html:not([data-mam-off]) div.mathIcon:hover {
+  filter: invert(1) hue-rotate(180deg) brightness(1.35);
+}
+
+/* Lesson callout blockquotes shipped white / near-white. */
+html:not([data-mam-off]) blockquote,
+html:not([data-mam-off]) div.questionText blockquote {
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-surface1) !important;
+}
