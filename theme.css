@@ -40,9 +40,12 @@ html:not([data-mam-off]) .headerMenuItem,
 html:not([data-mam-off]) .sidebarFrame,
 html:not([data-mam-off]) #mainContainer,
 html:not([data-mam-off]) #taskFrame,
+/* step/section cards: card look like the dashboard (no light outlines) */
 html:not([data-mam-off]) #sectionLinks,
 html:not([data-mam-off]) .step {
-  background-color: var(--ctp-base) !important;
+  background-color: var(--ctp-mantle) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-radius: 6px !important;
 }
 
 html:not([data-mam-off]) #userHeader {
