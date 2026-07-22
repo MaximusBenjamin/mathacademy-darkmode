@@ -725,3 +725,39 @@ html:not([data-mam-off]) [class^="questionNavigatorRightButton"]::before {
 html:not([data-mam-off]) [class$="ButtonDisabled"]::before {
   color: var(--ctp-surface2) !important;
 }
+
+/* Quiz question progress pills (top bar) */
+html:not([data-mam-off]) .questionButtonBar {
+  background-color: var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) .answeredQuestionBar {
+  background-color: #5c6fa3 !important;
+}
+
+html:not([data-mam-off]) .selectedQuestionBar {
+  background-color: var(--ctp-blue) !important;
+}
+
+/* Math toolbox buttons: kill any focus ring / stray border interacting with
+ * the invert filter, and theme the alternate button variant. */
+html:not([data-mam-off]) div.mathIcon,
+html:not([data-mam-off]) .matheditor-btn-span {
+  outline: none !important;
+}
+
+html:not([data-mam-off]) .matheditor-btn-span {
+  border-color: var(--ctp-surface1) !important;
+  background: transparent !important;
+}
+
+html:not([data-mam-off]) .matheditor-btn-span:hover {
+  background: var(--ctp-surface0) !important;
+  border-color: var(--ctp-overlay0) !important;
+}
+
+/* Cursor-location glow inside the math field shipped as a bright #68b4df
+ * halo — tone it down to a subtle palette-blue ring. */
+html:not([data-mam-off]) .mq-editable-field span.mq-hasCursor {
+  box-shadow: 0 0 0 1px var(--ctp-blue) !important;
+}
