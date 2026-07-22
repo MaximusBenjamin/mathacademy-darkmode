@@ -603,3 +603,16 @@ html:not([data-mam-off]) .dayOfWeek {
 html:not([data-mam-off]) .questionHeader {
   border-bottom-color: var(--ctp-surface0) !important;
 }
+
+/* The site marks semantic state with inline color:green/red (e.g. the
+ * Correct/Incorrect verdicts on review pages); our blanket text rule was
+ * flattening them. Re-map to the palette. */
+html:not([data-mam-off]) span[style*="color: green"],
+html:not([data-mam-off]) div[style*="color: green"] {
+  color: var(--ctp-green) !important;
+}
+
+html:not([data-mam-off]) span[style*="color: red"],
+html:not([data-mam-off]) div[style*="color: red"] {
+  color: var(--ctp-red) !important;
+}
