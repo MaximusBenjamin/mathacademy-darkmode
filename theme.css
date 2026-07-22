@@ -891,3 +891,22 @@ html:not([data-mam-off]) div.timesIcon::before,
 html:not([data-mam-off]) div.divIcon::before {
   font-size: 18px;
 }
+
+/* Fraction icon: stacked box-over-bar-over-box like the original, not "a/b". */
+html:not([data-mam-off]) div.fracIcon {
+  flex-direction: column !important;
+}
+
+html:not([data-mam-off]) div.fracIcon::before {
+  content: "\25A1";
+  font-size: 9px;
+  line-height: 1.1;
+}
+
+html:not([data-mam-off]) div.fracIcon::after {
+  content: "\25A1";
+  font-size: 9px;
+  line-height: 1.1;
+  border-top: 1px solid currentColor;
+  padding-top: 1px;
+}
