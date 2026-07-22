@@ -866,3 +866,28 @@ html:not([data-mam-off]) div.andIcon::before   { content: "\2227"; }
 html:not([data-mam-off]) div.orIcon::before    { content: "\2228"; }
 html:not([data-mam-off]) div.eIcon::before     { content: "e"; font-style: italic; }
 html:not([data-mam-off]) div.piIcon::before    { content: "\03C0"; }
+
+/* The site's JS positions the toolbox via inline left/top, which only work
+ * when the element is absolutely positioned — force it so the toolbox opens
+ * next to the focused input instead of falling to the bottom of the page. */
+html:not([data-mam-off]) #mathEditorToolbox {
+  position: absolute !important;
+}
+
+/* Bigger, serif math glyphs so ∞, fractions etc. read properly. */
+html:not([data-mam-off]) div.mathIcon {
+  font-family: "Times New Roman", Symbola, serif !important;
+  font-size: 16px;
+}
+
+html:not([data-mam-off]) div.fracIcon::before,
+html:not([data-mam-off]) div.nrtIcon::before {
+  font-size: 12px;
+}
+
+html:not([data-mam-off]) div.inftyIcon::before,
+html:not([data-mam-off]) div.pmIcon::before,
+html:not([data-mam-off]) div.timesIcon::before,
+html:not([data-mam-off]) div.divIcon::before {
+  font-size: 18px;
+}
