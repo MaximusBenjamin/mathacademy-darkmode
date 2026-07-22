@@ -676,3 +676,52 @@ html:not([data-mam-off]) div.questionText blockquote {
   background-color: var(--ctp-surface0) !important;
   border-color: var(--ctp-surface1) !important;
 }
+
+/* ------------------------------------------------------------ quiz page */
+
+html:not([data-mam-off]) #questions,
+html:not([data-mam-off]) #questionAnswerContainer {
+  background-color: var(--ctp-mantle) !important;
+}
+
+html:not([data-mam-off]) #submitTestButton {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+html:not([data-mam-off]) #submitTestButton.disabledButton {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-overlay0) !important;
+}
+
+html:not([data-mam-off]) .choiceLetterCircle {
+  border-color: var(--ctp-surface2) !important;
+}
+
+/* Quiz question navigator arrows: same baked-white caret PNGs as the
+ * lesson player — replace with glyphs. */
+html:not([data-mam-off]) [class^="questionNavigatorLeftButton"],
+html:not([data-mam-off]) [class^="questionNavigatorRightButton"] {
+  background-image: none !important;
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-overlay0) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html:not([data-mam-off]) [class^="questionNavigatorLeftButton"]::before { content: "\2039"; }
+html:not([data-mam-off]) [class^="questionNavigatorRightButton"]::before { content: "\203A"; }
+
+html:not([data-mam-off]) [class^="questionNavigatorLeftButton"]::before,
+html:not([data-mam-off]) [class^="questionNavigatorRightButton"]::before {
+  color: var(--ctp-text);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+  padding-bottom: 3px;
+}
+
+html:not([data-mam-off]) [class$="ButtonDisabled"]::before {
+  color: var(--ctp-surface2) !important;
+}
