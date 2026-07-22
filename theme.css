@@ -975,3 +975,21 @@ html:not([data-mam-off]) div.andIcon::before   { background-position: -2px -152p
 html:not([data-mam-off]) div.orIcon::before    { background-position: -44px -152px; }
 html:not([data-mam-off]) div.eIcon::before     { background-position: -2px -182px; }
 html:not([data-mam-off]) div.piIcon::before    { background-position: -44px -182px; }
+
+/* ------------------------------------------- lesson data tables */
+
+/* Header/label cells use a legacy bgcolor="#D6EAF8" (light-blue) attribute,
+ * which pins dark text on a pale cell. bgcolor is a presentation attribute
+ * (specificity 0), so this remaps every such cell to a surface tint. Data
+ * cells carry no bgcolor and are unaffected. */
+html:not([data-mam-off]) [bgcolor] {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* Lesson tables often use black cell borders — soften to a surface line. */
+html:not([data-mam-off]) .step table,
+html:not([data-mam-off]) .step table td,
+html:not([data-mam-off]) .step table th {
+  border-color: var(--ctp-surface1) !important;
+}
