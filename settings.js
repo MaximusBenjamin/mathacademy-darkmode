@@ -27,6 +27,17 @@
     document.dispatchEvent(new CustomEvent('mam-settings', { detail: settings }));
   }
 
+  // Inter is bundled with the extension; content-script CSS can't use relative
+  // urls for extension resources, so the @font-face is injected here instead.
+  if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+    var fontCss = document.createElement('style');
+    fontCss.id = 'mam-fonts';
+    fontCss.textContent =
+      "@font-face { font-family: 'Inter'; font-weight: 100 900; font-style: normal;" +
+      " src: url('" + chrome.runtime.getURL('fonts/inter.woff2') + "') format('woff2'); }";
+    (document.head || document.documentElement).appendChild(fontCss);
+  }
+
   if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
     chrome.storage.sync.get(DEFAULTS, apply);
     chrome.storage.onChanged.addListener(function (changes, area) {

@@ -529,3 +529,25 @@ html:not([data-mam-off]) .taskTypeUnlocked,
 html:not([data-mam-off]) .taskTypeLocked {
   margin-left: 0 !important;
 }
+
+/* ------------------------------------------------------------------- font */
+
+/* Inter (bundled variable font, @font-face injected by settings.js).
+ * Deliberately no -webkit-font-smoothing override: default subpixel
+ * rendering was preferred. */
+html:not([data-mam-off]) body,
+html:not([data-mam-off]) div,
+html:not([data-mam-off]) span,
+html:not([data-mam-off]) td,
+html:not([data-mam-off]) p,
+html:not([data-mam-off]) li,
+html:not([data-mam-off]) h1,
+html:not([data-mam-off]) h2,
+html:not([data-mam-off]) h3,
+html:not([data-mam-off]) h4,
+html:not([data-mam-off]) a,
+html:not([data-mam-off]) button,
+html:not([data-mam-off]) input,
+html:not([data-mam-off]) textarea {
+  font-family: 'Inter', 'Trebuchet MS', sans-serif !important;
+}
