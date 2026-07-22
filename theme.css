@@ -30,6 +30,7 @@ html:not([data-mam-off]) {
 
 /* ------------------------------------------------------------ backgrounds */
 
+/* Page surfaces: mantle everywhere (the darker overall look). */
 html:not([data-mam-off]) body,
 html:not([data-mam-off]) #wrap,
 html:not([data-mam-off]) #topBarContainer,
@@ -37,10 +38,14 @@ html:not([data-mam-off]) #topRibbon,
 html:not([data-mam-off]) #coursesMenu,
 html:not([data-mam-off]) #userMenu,
 html:not([data-mam-off]) .headerMenuItem,
-html:not([data-mam-off]) .sidebarFrame,
 html:not([data-mam-off]) #mainContainer,
 html:not([data-mam-off]) #taskFrame,
-/* step/section cards: card look like the dashboard (no light outlines) */
+html:not([data-mam-off]) #steps {
+  background-color: var(--ctp-mantle) !important;
+}
+
+/* Cards: same mantle, distinguished by muted border lines. */
+html:not([data-mam-off]) .sidebarFrame,
 html:not([data-mam-off]) #sectionLinks,
 html:not([data-mam-off]) .step {
   background-color: var(--ctp-mantle) !important;
@@ -380,9 +385,6 @@ html:not([data-mam-off]) #header {
   border-bottom: 1px solid var(--ctp-surface0) !important;
 }
 
-html:not([data-mam-off]) #steps {
-  background-color: var(--ctp-base) !important;
-}
 
 html:not([data-mam-off]) #bookmarkDialog {
   background-color: var(--ctp-mantle) !important;
@@ -467,4 +469,35 @@ html:not([data-mam-off]) .questionWidget-submitButton {
 html:not([data-mam-off]) .questionWidget-submitButton.disabledButton {
   background-color: var(--ctp-surface0) !important;
   color: var(--ctp-overlay0) !important;
+}
+
+/* Exit / close buttons: replace the low-res PNG with a crisp glyph. */
+html:not([data-mam-off]) #exitButton,
+html:not([data-mam-off]) #knowledgeGraph-closeButton {
+  background-image: none !important;
+  background-color: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+}
+
+html:not([data-mam-off]) #exitButton::before,
+html:not([data-mam-off]) #knowledgeGraph-closeButton::before {
+  content: "\00D7";
+  font-size: 30px;
+  line-height: 1;
+  color: var(--ctp-subtext0);
+  padding-bottom: 2px;
+}
+
+html:not([data-mam-off]) #exitButton:hover,
+html:not([data-mam-off]) #knowledgeGraph-closeButton:hover {
+  background-image: none !important;
+  background-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) #exitButton:hover::before,
+html:not([data-mam-off]) #knowledgeGraph-closeButton:hover::before {
+  color: var(--ctp-text);
 }
