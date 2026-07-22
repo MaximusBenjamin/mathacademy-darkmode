@@ -761,3 +761,108 @@ html:not([data-mam-off]) .matheditor-btn-span:hover {
 html:not([data-mam-off]) .mq-editable-field span.mq-hasCursor {
   box-shadow: 0 0 0 1px var(--ctp-blue) !important;
 }
+
+/* --------------------------------- global checkmark/status img replacement */
+
+/* Chromium replaces an <img>'s pixels with CSS content: swap every low-res
+ * checkmark PNG for a crisp glyph. (Task-card headers hide imgs entirely and
+ * keep their own ::after checkmarks — these rules cover everywhere else.) */
+html:not([data-mam-off]) img[src*="green-checkmark"] {
+  content: "\2713";
+  color: var(--ctp-green);
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+}
+
+html:not([data-mam-off]) img[src*="gray-checkmark"] {
+  content: "\2713";
+  color: var(--ctp-overlay0);
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+}
+
+html:not([data-mam-off]) img[src*="red-x"],
+html:not([data-mam-off]) img[src*="incorrect"] {
+  content: "\2717";
+  color: var(--ctp-red);
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Color the feedback text that follows a status icon. */
+html:not([data-mam-off]) img[src*="green-checkmark"] + span,
+html:not([data-mam-off]) img[src*="green-checkmark"] + div {
+  color: var(--ctp-green) !important;
+}
+
+html:not([data-mam-off]) img[src*="red-x"] + span,
+html:not([data-mam-off]) img[src*="red-x"] + div,
+html:not([data-mam-off]) img[src*="incorrect"] + span,
+html:not([data-mam-off]) img[src*="incorrect"] + div {
+  color: var(--ctp-red) !important;
+}
+
+/* ------------------------------------- multistep submit button variant */
+
+html:not([data-mam-off]) .submitButton {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+html:not([data-mam-off]) .submitButton.disabledButton {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-overlay0) !important;
+}
+
+/* ------------------------- math toolbox: glyphs instead of the sprite */
+
+/* The icon sprite has the site's blue grid lines baked into the image, which
+ * invert+hue-rotate turned into cyan rings. Drop the sprite entirely. */
+html:not([data-mam-off]) div.mathIcon {
+  background-image: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--ctp-text) !important;
+  font-size: 13px;
+  line-height: 1;
+  border: 1px solid var(--ctp-surface1) !important;
+  border-radius: 4px;
+}
+
+html:not([data-mam-off]) div.mathIcon:hover {
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-overlay0) !important;
+  filter: none !important;
+}
+
+html:not([data-mam-off]) div.fracIcon::before  { content: "\25A1\2044\25A1"; font-size: 11px; }
+html:not([data-mam-off]) div.sqrIcon::before   { content: "\25A1\00B2"; }
+html:not([data-mam-off]) div.expIcon::before   { content: "\25A1\207F"; }
+html:not([data-mam-off]) div.subIcon::before   { content: "\25A1\2099"; }
+html:not([data-mam-off]) div.sqrtIcon::before  { content: "\221A\25A1"; }
+html:not([data-mam-off]) div.cbrtIcon::before  { content: "\221B\25A1"; }
+html:not([data-mam-off]) div.nrtIcon::before   { content: "\207F\221A\25A1"; font-size: 11px; }
+html:not([data-mam-off]) div.absIcon::before   { content: "|\25A1|"; }
+html:not([data-mam-off]) div.gtIcon::before    { content: ">"; }
+html:not([data-mam-off]) div.ltIcon::before    { content: "<"; }
+html:not([data-mam-off]) div.gteIcon::before   { content: "\2265"; }
+html:not([data-mam-off]) div.lteIcon::before   { content: "\2264"; }
+html:not([data-mam-off]) div.neIcon::before    { content: "\2260"; }
+html:not([data-mam-off]) div.pmIcon::before    { content: "\00B1"; }
+html:not([data-mam-off]) div.timesIcon::before { content: "\00D7"; }
+html:not([data-mam-off]) div.cdotIcon::before  { content: "\00B7"; }
+html:not([data-mam-off]) div.divIcon::before   { content: "\00F7"; }
+html:not([data-mam-off]) div.cupIcon::before   { content: "\222A"; }
+html:not([data-mam-off]) div.capIcon::before   { content: "\2229"; }
+html:not([data-mam-off]) div.nullIcon::before  { content: "\2205"; }
+html:not([data-mam-off]) div.inftyIcon::before { content: "\221E"; }
+html:not([data-mam-off]) div.andIcon::before   { content: "\2227"; }
+html:not([data-mam-off]) div.orIcon::before    { content: "\2228"; }
+html:not([data-mam-off]) div.eIcon::before     { content: "e"; font-style: italic; }
+html:not([data-mam-off]) div.piIcon::before    { content: "\03C0"; }
