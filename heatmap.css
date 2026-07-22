@@ -11,8 +11,11 @@
   --mam-l3: #30a14e;
   position: relative;
   box-sizing: border-box;
+  /* Match the site's task cards: 680px content-box + 1px borders ≈ 685px total. */
+  width: 685px;
+  max-width: 100%;
   margin: 0 0 16px;
-  padding: 16px;
+  padding: 16px 14px; /* 653px width leaves 655px inner: full-year grid is 652px */
   background: var(--ctp-mantle, #ffffff);
   border: 1px solid var(--ctp-surface0, #d8dae1);
   border-radius: 6px;
@@ -104,6 +107,10 @@ html:not([data-mam-off]) #mam-heatmap {
 #mam-heatmap .mam-hm__wrap {
   overflow-x: auto;
   padding-bottom: 4px;
+  scrollbar-width: none; /* if it ever overflows, scroll silently — no bar */
+}
+#mam-heatmap .mam-hm__wrap::-webkit-scrollbar {
+  display: none;
 }
 
 #mam-heatmap .mam-hm__months {

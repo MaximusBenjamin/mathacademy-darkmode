@@ -11,6 +11,10 @@
     mamThMed: 15,
     mamThHigh: 30,
     mamHideXpFrame: false,
+    mamStatsShown: {
+      streak: true, longest: true, avg: true,
+      max: true, month: true, bestMonth: true,
+    },
   };
 
   function apply(settings) {

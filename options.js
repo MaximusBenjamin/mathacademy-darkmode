@@ -10,6 +10,10 @@
     mamThMed: 15,
     mamThHigh: 30,
     mamHideXpFrame: false,
+    mamStatsShown: {
+      streak: true, longest: true, avg: true,
+      max: true, month: true, bestMonth: true,
+    },
   };
 
   // Last-known-good values, used to recover from blank/garbage number input.
@@ -81,6 +85,16 @@
 
     document.getElementById('mamStartDate').addEventListener('change', function () {
       save('mamStartDate', this.value); // '' when cleared — allowed
+    });
+
+    var statBoxes = document.querySelectorAll('.stats-grid input[data-stat]');
+    var shown = Object.assign({}, DEFAULTS.mamStatsShown, settings.mamStatsShown);
+    statBoxes.forEach(function (box) {
+      box.checked = shown[box.dataset.stat] !== false;
+      box.addEventListener('change', function () {
+        shown[box.dataset.stat] = box.checked;
+        save('mamStatsShown', shown);
+      });
     });
 
     document.getElementById('clearCache').addEventListener('click', function () {

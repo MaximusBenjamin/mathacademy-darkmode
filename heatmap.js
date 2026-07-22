@@ -19,9 +19,13 @@
   var SLEEP_MS = 200;
   var ACT_KEY = 'mamActivities';
   var SYNC_KEY = 'mamLastSync';
-  var STAT_LABELS = [
-    'Current Streak', 'Longest Streak', 'Avg Daily XP',
-    'Max Daily XP', 'This Month XP', 'Best Month XP',
+  var STAT_DEFS = [
+    ['streak', 'Current Streak'],
+    ['longest', 'Longest Streak'],
+    ['avg', 'Avg Daily XP'],
+    ['max', 'Max Daily XP'],
+    ['month', 'This Month XP'],
+    ['bestMonth', 'Best Month XP'],
   ];
 
   // ---------- storage (chrome.storage.local, localStorage fallback for dev injection) ----------
@@ -261,12 +265,14 @@
     header.appendChild(btn);
 
     var stats = el('div', 'mam-hm__stats');
-    var statValues = STAT_LABELS.map(function (label) {
+    var statRoots = {};
+    var statValues = STAT_DEFS.map(function (def) {
       var stat = el('div', 'mam-hm__stat');
       var value = el('div', 'mam-hm__stat-value', '–');
       stat.appendChild(value);
-      stat.appendChild(el('div', 'mam-hm__stat-label', label));
+      stat.appendChild(el('div', 'mam-hm__stat-label', def[1]));
       stats.appendChild(stat);
+      statRoots[def[0]] = stat;
       return value;
     });
 
@@ -312,7 +318,7 @@
     root.appendChild(footer);
     root.appendChild(tooltip);
 
-    els = { btn: btn, statValues: statValues, months: months, days: days, tooltip: tooltip };
+    els = { btn: btn, statValues: statValues, statRoots: statRoots, months: months, days: days, tooltip: tooltip };
   }
 
   function showTooltip(cell) {
@@ -375,7 +381,10 @@
     var gridStart = startDate
       ? mondayOf(startDate)
       : mondayOf(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 364));
+    // Extend through Sunday of the current week so the last column is complete
+    // (perfect rectangle, like MA Grid) — future days render as empty cells.
     var totalDays = Math.round((today - gridStart) / DAY_MS) + 1;
+    totalDays += (7 - (totalDays % 7)) % 7;
     var cols = Math.floor((totalDays - 1) / 7) + 1;
 
     els.days.textContent = '';
@@ -395,7 +404,8 @@
       var key = dateKey(d);
       var xp = daily[key] || 0;
 
-      var cell = el('div', 'mam-hm__cell mam-hm__cell--l' + levelFor(xp, s));
+      var future = key > todayKey;
+      var cell = el('div', 'mam-hm__cell mam-hm__cell--l' + (future ? 0 : levelFor(xp, s)));
       cell.style.gridRow = String(row + 1);
       cell.style.gridColumn = String(col + 1);
       cell.setAttribute('data-date', key);
@@ -428,6 +438,11 @@
     v[3].textContent = String(st.maxXP);
     v[4].textContent = String(st.thisMonth);
     v[5].textContent = String(st.bestMonth);
+
+    var shown = settings().mamStatsShown || {};
+    STAT_DEFS.forEach(function (def) {
+      els.statRoots[def[0]].style.display = shown[def[0]] === false ? 'none' : '';
+    });
   }
 
   // ---------- sync + render ----------
