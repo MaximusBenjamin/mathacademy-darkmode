@@ -307,3 +307,56 @@ html:not([data-mam-off]) .helpMenu-item:hover,
 html:not([data-mam-off]) div[id$="-cancelButton"]:hover {
   background-color: var(--ctp-surface0) !important;
 }
+
+/* --------------------------------------------------- sidebar as cards */
+
+html:not([data-mam-off]) .sidebarFrame {
+  background-color: var(--ctp-mantle) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-radius: 6px !important;
+}
+
+html:not([data-mam-off]) #estimatedCompletion,
+html:not([data-mam-off]) #overallXPFrame,
+html:not([data-mam-off]) #weeklyActivityFrame,
+html:not([data-mam-off]) #activityWidget-main,
+html:not([data-mam-off]) #leaderboardTableFrame {
+  border-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) .yAxisGridLine {
+  border-color: var(--ctp-surface2) !important;
+}
+
+/* ------------------------------------------- mastery map (#graph SVG) */
+/* Graphviz emits colors as presentation attributes, which any CSS rule
+   overrides. The original ramp is light→dark blue for mastery; on dark we
+   flip it to dim→bright (like the heatmap), so original-dark (white-text)
+   nodes become the brightest and their text flips dark, and vice versa. */
+
+html:not([data-mam-off]) #graph {
+  background-color: var(--ctp-base) !important;
+}
+
+html:not([data-mam-off]) #graph svg > g > polygon[fill="#ffffff"] {
+  fill: var(--ctp-base) !important;
+}
+
+html:not([data-mam-off]) #graph [fill="rgb(242, 242, 242)"] { fill: #363a4f !important; }
+html:not([data-mam-off]) #graph [fill="rgb(165, 207, 243)"] { fill: #566081 !important; }
+html:not([data-mam-off]) #graph [fill="rgb(120, 182, 237)"] { fill: #63739e !important; }
+html:not([data-mam-off]) #graph [fill="rgb(74, 158, 232)"]  { fill: #7087ba !important; }
+html:not([data-mam-off]) #graph [fill="rgb(29, 134, 226)"]  { fill: #7d9ad7 !important; }
+html:not([data-mam-off]) #graph [fill="rgb(23, 107, 181)"]  { fill: var(--ctp-blue) !important; }
+
+html:not([data-mam-off]) #graph g.node [stroke="#000000"],
+html:not([data-mam-off]) #graph g.edge [stroke="#000000"] {
+  stroke: var(--ctp-overlay0) !important;
+}
+
+html:not([data-mam-off]) #graph g.edge polygon[fill="#000000"] {
+  fill: var(--ctp-overlay0) !important;
+}
+
+html:not([data-mam-off]) #graph text[fill="white"] { fill: var(--ctp-crust) !important; }
+html:not([data-mam-off]) #graph text[fill="black"] { fill: var(--ctp-text) !important; }
