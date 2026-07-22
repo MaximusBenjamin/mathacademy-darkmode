@@ -360,3 +360,12 @@ html:not([data-mam-off]) #graph g.edge polygon[fill="#000000"] {
 
 html:not([data-mam-off]) #graph text[fill="white"] { fill: var(--ctp-crust) !important; }
 html:not([data-mam-off]) #graph text[fill="black"] { fill: var(--ctp-text) !important; }
+
+html:not([data-mam-off]) #topRibbon {
+  border-bottom-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) .taskDetails,
+html:not([data-mam-off]) .taskButtons {
+  border-top-color: var(--ctp-surface0) !important;
+}
