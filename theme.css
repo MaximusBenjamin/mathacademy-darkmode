@@ -910,3 +910,68 @@ html:not([data-mam-off]) div.fracIcon::after {
   border-top: 1px solid currentColor;
   padding-top: 1px;
 }
+
+/* ---- toolbox icons v2: original sprite artwork, recolored ------------- */
+/* Overrides the glyph experiment above. The sprite (black icons on white,
+ * blue grid lines between tiles) is rendered on a ::before layer so only IT
+ * gets invert+screen (borders/hover on the button stay unfiltered), inset
+ * 1px with shifted positions to crop the blue grid-line bleed. */
+
+html:not([data-mam-off]) div.mathIcon {
+  position: relative !important;
+  background-image: none !important;
+  border: 1px solid var(--ctp-surface1) !important;
+  border-radius: 4px;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+html:not([data-mam-off]) div.mathIcon:hover {
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-overlay0) !important;
+}
+
+html:not([data-mam-off]) div.mathIcon::after {
+  content: none !important;
+}
+
+html:not([data-mam-off]) div.mathIcon::before {
+  content: "" !important;
+  position: absolute;
+  top: 1px; left: 1px;
+  width: 37px; height: 25px;
+  border: none !important;
+  padding: 0 !important;
+  background-image: url('https://mathacademy.com/img/math-icons.png');
+  background-repeat: no-repeat;
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+  font-size: 0;
+}
+
+html:not([data-mam-off]) div.fracIcon  { flex-direction: row !important; }
+html:not([data-mam-off]) div.fracIcon::before  { background-position: -2px -2px; }
+html:not([data-mam-off]) div.sqrIcon::before   { background-position: -44px -2px; }
+html:not([data-mam-off]) div.expIcon::before   { background-position: -86px -2px; }
+html:not([data-mam-off]) div.subIcon::before   { background-position: -128px -2px; }
+html:not([data-mam-off]) div.sqrtIcon::before  { background-position: -2px -32px; }
+html:not([data-mam-off]) div.cbrtIcon::before  { background-position: -44px -32px; }
+html:not([data-mam-off]) div.nrtIcon::before   { background-position: -86px -32px; }
+html:not([data-mam-off]) div.absIcon::before   { background-position: -128px -32px; }
+html:not([data-mam-off]) div.gtIcon::before    { background-position: -2px -62px; }
+html:not([data-mam-off]) div.ltIcon::before    { background-position: -44px -62px; }
+html:not([data-mam-off]) div.gteIcon::before   { background-position: -86px -62px; }
+html:not([data-mam-off]) div.lteIcon::before   { background-position: -128px -62px; }
+html:not([data-mam-off]) div.neIcon::before    { background-position: -2px -92px; }
+html:not([data-mam-off]) div.pmIcon::before    { background-position: -44px -92px; }
+html:not([data-mam-off]) div.timesIcon::before { background-position: -86px -92px; }
+html:not([data-mam-off]) div.cdotIcon::before  { background-position: -128px -92px; }
+html:not([data-mam-off]) div.divIcon::before   { background-position: -170px -92px; }
+html:not([data-mam-off]) div.cupIcon::before   { background-position: -2px -122px; }
+html:not([data-mam-off]) div.capIcon::before   { background-position: -44px -122px; }
+html:not([data-mam-off]) div.nullIcon::before  { background-position: -86px -122px; }
+html:not([data-mam-off]) div.inftyIcon::before { background-position: -128px -122px; }
+html:not([data-mam-off]) div.andIcon::before   { background-position: -2px -152px; }
+html:not([data-mam-off]) div.orIcon::before    { background-position: -44px -152px; }
+html:not([data-mam-off]) div.eIcon::before     { background-position: -2px -182px; }
+html:not([data-mam-off]) div.piIcon::before    { background-position: -44px -182px; }
