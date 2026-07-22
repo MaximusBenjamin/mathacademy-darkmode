@@ -551,3 +551,51 @@ html:not([data-mam-off]) input,
 html:not([data-mam-off]) textarea {
   font-family: 'Inter', 'Trebuchet MS', sans-serif !important;
 }
+
+/* --------------------------------------- completed-task review page */
+
+/* Expanded task summary card (completed lesson/review/multistep view). */
+html:not([data-mam-off]) .taskExpanded {
+  background-color: var(--ctp-mantle) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-left-width: 4px !important;
+  border-radius: 6px !important;
+}
+
+/* Knowledge-point headers and reviewed questions: muted card outlines. */
+html:not([data-mam-off]) .kpTitle,
+html:not([data-mam-off]) .question {
+  border-color: var(--ctp-surface0) !important;
+  border-radius: 6px !important;
+}
+
+/* Back button: replace the low-res arrow PNG with a glyph. */
+html:not([data-mam-off]) #taskBackButton {
+  background-image: none !important;
+  background-color: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+}
+
+html:not([data-mam-off]) #taskBackButton::before {
+  content: "\2190";
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ctp-subtext0);
+}
+
+html:not([data-mam-off]) #taskBackButton:hover {
+  background-image: none !important;
+  background-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) #taskBackButton:hover::before {
+  color: var(--ctp-text);
+}
+
+/* Inter is slightly wider than Trebuchet; keep chart day labels on one line. */
+html:not([data-mam-off]) .dayOfWeek {
+  white-space: nowrap !important;
+}
