@@ -428,3 +428,29 @@ html:not([data-mam-off]) #progressBarPreviousButton,
 html:not([data-mam-off]) #progressBarNextButton {
   background-color: var(--ctp-surface0) !important;
 }
+
+/* The caret PNGs have a baked-in white square — replace them with text chevrons. */
+html:not([data-mam-off]) #progressBarPreviousButton,
+html:not([data-mam-off]) #progressBarNextButton {
+  background-image: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html:not([data-mam-off]) #progressBarPreviousButton::before { content: "\2039"; }
+html:not([data-mam-off]) #progressBarNextButton::before { content: "\203A"; }
+
+html:not([data-mam-off]) #progressBarPreviousButton::before,
+html:not([data-mam-off]) #progressBarNextButton::before {
+  color: var(--ctp-text);
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1;
+  padding-bottom: 3px;
+}
+
+html:not([data-mam-off]) #progressBarPreviousButton[class$="Disabled"]::before,
+html:not([data-mam-off]) #progressBarNextButton[class$="Disabled"]::before {
+  color: var(--ctp-surface2);
+}
