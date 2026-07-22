@@ -599,3 +599,7 @@ html:not([data-mam-off]) #taskBackButton:hover::before {
 html:not([data-mam-off]) .dayOfWeek {
   white-space: nowrap !important;
 }
+
+html:not([data-mam-off]) .questionHeader {
+  border-bottom-color: var(--ctp-surface0) !important;
+}
