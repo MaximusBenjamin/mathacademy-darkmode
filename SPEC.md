@@ -24,7 +24,7 @@ MV3 extension, plain JS/CSS, no build step, loaded unpacked. All files at repo r
 | mamThMed       | 15      | XP >= this → level 2 cell                          |
 | mamThHigh      | 30      | XP >= this → level 3 cell                          |
 | mamHideXpFrame | false   | hide the site's native weekly XP widget            |
-| mamStatsShown  | all true | object {streak,longest,avg,max,month,bestMonth: bool} — which heatmap stats render |
+| mamStatsShown  | all true | object {streak,longest,avg,avgSession,max,month,bestMonth: bool} — which heatmap stats render |
 
 `settings.js` (document_start) is the single settings authority: it reads sync
 storage, stamps `document.documentElement`:

@@ -11,7 +11,7 @@
     mamThHigh: 30,
     mamHideXpFrame: false,
     mamStatsShown: {
-      streak: true, longest: true, avg: true,
+      streak: true, longest: true, avg: true, avgSession: true,
       max: true, month: true, bestMonth: true,
     },
   };

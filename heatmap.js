@@ -23,6 +23,7 @@
     ['streak', 'Current Streak'],
     ['longest', 'Longest Streak'],
     ['avg', 'Avg Daily XP'],
+    ['avgSession', 'Avg Session XP'],
     ['max', 'Max Daily XP'],
     ['month', 'This Month XP'],
     ['bestMonth', 'Best Month XP'],
@@ -196,7 +197,7 @@
   }
 
   function computeStats(daily, statsStart, today) {
-    var totalXP = 0, maxXP = 0, dayCount = 0;
+    var totalXP = 0, maxXP = 0, dayCount = 0, activeDays = 0;
     var monthTotals = {};
     var longest = 0, run = 0;
 
@@ -209,7 +210,7 @@
       dayCount++;
       var mk = key.slice(0, 7);
       monthTotals[mk] = (monthTotals[mk] || 0) + xp;
-      if (xp > 0) { run++; if (run > longest) longest = run; } else { run = 0; }
+      if (xp > 0) { activeDays++; run++; if (run > longest) longest = run; } else { run = 0; }
       d.setDate(d.getDate() + 1);
     }
 
@@ -232,6 +233,7 @@
       streak: streak,
       longest: longest,
       avg: dayCount > 0 ? Math.round(totalXP / dayCount) : 0, // mean over ALL days in range
+      avgSession: activeDays > 0 ? Math.round(totalXP / activeDays) : 0, // active days only
       maxXP: maxXP,
       thisMonth: monthTotals[dateKey(today).slice(0, 7)] || 0,
       bestMonth: bestMonth,
@@ -435,9 +437,10 @@
     v[0].textContent = String(st.streak);
     v[1].textContent = String(st.longest);
     v[2].textContent = String(st.avg);
-    v[3].textContent = String(st.maxXP);
-    v[4].textContent = String(st.thisMonth);
-    v[5].textContent = String(st.bestMonth);
+    v[3].textContent = String(st.avgSession);
+    v[4].textContent = String(st.maxXP);
+    v[5].textContent = String(st.thisMonth);
+    v[6].textContent = String(st.bestMonth);
 
     var shown = settings().mamStatsShown || {};
     STAT_DEFS.forEach(function (def) {
