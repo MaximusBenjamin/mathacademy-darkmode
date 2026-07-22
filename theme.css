@@ -1,0 +1,277 @@
+/* MathAcademy Macchiato — Catppuccin Macchiato theme for mathacademy.com.
+ * Every rule is gated on html:not([data-mam-off]); settings.js stamps the
+ * data-mam-off attribute at document_start when the theme is disabled. */
+
+/* ---------------------------------------------------------------- palette */
+
+:root {
+  --ctp-base: #24273a;
+  --ctp-mantle: #1e2030;
+  --ctp-crust: #181926;
+  --ctp-surface0: #363a4f;
+  --ctp-surface1: #494d64;
+  --ctp-surface2: #5b6078;
+  --ctp-overlay0: #6e738d;
+  --ctp-subtext0: #a5adcb;
+  --ctp-text: #cad3f5;
+  --ctp-lavender: #b7bdf8;
+  --ctp-blue: #8aadf4;
+  --ctp-mauve: #c6a0f6;
+  --ctp-green: #a6da95;
+  --ctp-red: #ed8796;
+  --ctp-peach: #f5a97f;
+  --ctp-yellow: #eed49f;
+  --ctp-teal: #8bd5ca;
+}
+
+html:not([data-mam-off]) {
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------ backgrounds */
+
+html:not([data-mam-off]) body,
+html:not([data-mam-off]) #wrap,
+html:not([data-mam-off]) #topBarContainer,
+html:not([data-mam-off]) #topRibbon,
+html:not([data-mam-off]) #coursesMenu,
+html:not([data-mam-off]) #userMenu,
+html:not([data-mam-off]) .headerMenuItem,
+html:not([data-mam-off]) .sidebarFrame,
+html:not([data-mam-off]) #mainContainer,
+html:not([data-mam-off]) #taskFrame,
+html:not([data-mam-off]) #sectionLinks,
+html:not([data-mam-off]) .step {
+  background-color: var(--ctp-base) !important;
+}
+
+html:not([data-mam-off]) #userHeader {
+  background-color: var(--ctp-mantle) !important;
+}
+
+html:not([data-mam-off]) #coursePercentComplete,
+html:not([data-mam-off]) #dailyGoalProgressBarFrame,
+html:not([data-mam-off]) .sequenceCoursePercentComplete {
+  background-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) td.leaderboardUserCurrent {
+  background-color: var(--ctp-surface0) !important;
+}
+
+/* ------------------------------------------------------------------- text */
+
+html:not([data-mam-off]) body,
+html:not([data-mam-off]) div,
+html:not([data-mam-off]) span,
+html:not([data-mam-off]) td,
+html:not([data-mam-off]) p,
+html:not([data-mam-off]) li,
+html:not([data-mam-off]) h1,
+html:not([data-mam-off]) h2,
+html:not([data-mam-off]) h3,
+html:not([data-mam-off]) h4 {
+  color: var(--ctp-text) !important;
+}
+
+html:not([data-mam-off]) .taskCourseNameUnlocked,
+html:not([data-mam-off]) .coursesMenu-courseSequence,
+html:not([data-mam-off]) #coursesMenu-underDevelopment,
+html:not([data-mam-off]) #userMenu-username,
+html:not([data-mam-off]) #xpEarned,
+html:not([data-mam-off]) #todaysGoalHeader,
+html:not([data-mam-off]) #thisWeekHeader,
+html:not([data-mam-off]) #estimatedCompletion,
+html:not([data-mam-off]) #dailyGoalPoints,
+html:not([data-mam-off]) #leagueLevels,
+html:not([data-mam-off]) .leagueLevelPercentile,
+html:not([data-mam-off]) #leaderboardTimeRemaining,
+html:not([data-mam-off]) .taskPointsUnlocked,
+html:not([data-mam-off]) .taskPointsLocked,
+html:not([data-mam-off]) .completedTaskPointsSlash,
+html:not([data-mam-off]) div.taskDate {
+  color: var(--ctp-subtext0) !important;
+}
+
+html:not([data-mam-off]) .coursesMenu-categoryHeader,
+html:not([data-mam-off]) #courseNameLink,
+html:not([data-mam-off]) #totalXP,
+html:not([data-mam-off]) #thisWeekTotalXP {
+  color: var(--ctp-mauve) !important;
+}
+
+/* ------------------------------------------------------- links & controls */
+
+html:not([data-mam-off]) a,
+html:not([data-mam-off]) a.headerLink,
+html:not([data-mam-off]) a.coursesMenu-courseLink,
+html:not([data-mam-off]) a.taskPrerequisiteLink {
+  color: var(--ctp-blue) !important;
+}
+
+html:not([data-mam-off]) a:hover {
+  color: var(--ctp-lavender) !important;
+}
+
+html:not([data-mam-off]) .button,
+html:not([data-mam-off]) .taskStartButton,
+html:not([data-mam-off]) div[id$="-submitButton"],
+html:not([data-mam-off]) div[id$="-closeButton"] {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+/* -------------------------------------------------------- accents & state */
+
+html:not([data-mam-off]) #dailyGoalProgressBar,
+html:not([data-mam-off]) .dayActivity {
+  background-color: var(--ctp-yellow) !important;
+}
+
+html:not([data-mam-off]) .pointsGained,
+html:not([data-mam-off]) .leaderboardTextPromotionZone {
+  color: var(--ctp-green) !important;
+}
+
+html:not([data-mam-off]) .pointsLost,
+html:not([data-mam-off]) .leaderboardTextDemotionZone {
+  color: var(--ctp-red) !important;
+}
+
+html:not([data-mam-off]) ::selection {
+  background: var(--ctp-surface2) !important;
+  color: var(--ctp-text) !important;
+}
+
+/* Site graphics are drawn for a light page; invert + hue-rotate keeps hues
+ * while flipping lightness, and screen blending drops black boxes. */
+html:not([data-mam-off]) img[src*="/graphics/"],
+html:not([data-mam-off]) img.logo {
+  filter: invert(1) hue-rotate(180deg) !important;
+  mix-blend-mode: screen !important;
+}
+
+/* ------------------------------------------------------------- task cards */
+
+html:not([data-mam-off]) .taskUnlocked,
+html:not([data-mam-off]) .taskCompleted,
+html:not([data-mam-off]) .taskLocked {
+  background-color: var(--ctp-mantle) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+  border-left-width: 4px !important;
+  border-radius: 6px !important;
+}
+
+html:not([data-mam-off]) .taskNameUnlocked,
+html:not([data-mam-off]) .taskTopicLink {
+  color: var(--ctp-text) !important;
+}
+
+html:not([data-mam-off]) .taskHeader img {
+  display: none !important;
+}
+
+/* Per-type left border (app.js stamps data-ma-type on each card). */
+html:not([data-mam-off]) [data-ma-type="lesson"] {
+  border-left-color: var(--ctp-blue) !important;
+}
+
+html:not([data-mam-off]) [data-ma-type="review"] {
+  border-left-color: var(--ctp-green) !important;
+}
+
+html:not([data-mam-off]) [data-ma-type="multistep"] {
+  border-left-color: var(--ctp-peach) !important;
+}
+
+html:not([data-mam-off]) [data-ma-type="assessment"] {
+  border-left-color: var(--ctp-mauve) !important;
+}
+
+/* ------------------------------------------------ site fixes: type badges */
+
+/* Direct-child first span only: the type label. Nested XP spans deeper in
+ * the header must never grow a dot (the old descendant selector did that). */
+html:not([data-mam-off]) .taskHeader > span:first-of-type::before {
+  content: "\25CF\00A0 ";
+}
+
+html:not([data-mam-off]) [data-ma-type="lesson"] .taskHeader > span:first-of-type {
+  color: var(--ctp-blue) !important;
+}
+
+html:not([data-mam-off]) [data-ma-type="review"] .taskHeader > span:first-of-type {
+  color: var(--ctp-green) !important;
+}
+
+html:not([data-mam-off]) [data-ma-type="multistep"] .taskHeader > span:first-of-type {
+  color: var(--ctp-peach) !important;
+}
+
+html:not([data-mam-off]) [data-ma-type="assessment"] .taskHeader > span:first-of-type {
+  color: var(--ctp-mauve) !important;
+}
+
+/* ------------------------------------------------ site fixes: checkmarks */
+
+/* The checkmark imgs are display:none above but stay in the DOM, so the
+ * adjacent-sibling combinator still selects the following span. */
+html:not([data-mam-off]) .taskHeader img[src*="green-checkmark"] + span::after {
+  content: " \2713";
+  color: var(--ctp-green);
+}
+
+html:not([data-mam-off]) .taskHeader img[src*="gray-checkmark"] + span::after {
+  content: " \2713";
+  color: var(--ctp-overlay0);
+}
+
+/* ---------------------------------------------- site fixes: league board */
+
+html:not([data-mam-off]) #leagueLevels {
+  background-color: var(--ctp-mantle) !important;
+  border: 1px solid var(--ctp-surface0) !important;
+}
+
+/* Promotion/demotion arrows are light-page GIFs; replace with glyphs. */
+html:not([data-mam-off]) td > img[src*="promotion-arrow"],
+html:not([data-mam-off]) td > img[src*="demotion-arrow"] {
+  display: none !important;
+}
+
+html:not([data-mam-off]) td:has(> img[src*="promotion-arrow"])::after {
+  content: "\25B2";
+  color: var(--ctp-green);
+}
+
+html:not([data-mam-off]) td:has(> img[src*="demotion-arrow"])::after {
+  content: "\25BC";
+  color: var(--ctp-red);
+}
+
+/* --------------------------------------------- native weekly XP widget */
+
+/* Gated on its own setting (mamHideXpFrame), independent of the theme. */
+html[data-mam-hide-xp] #xpFrame {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------ gap fillers */
+
+html:not([data-mam-off]) input,
+html:not([data-mam-off]) textarea,
+html:not([data-mam-off]) select {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+  border: 1px solid var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) input::placeholder,
+html:not([data-mam-off]) textarea::placeholder {
+  color: var(--ctp-overlay0) !important;
+}
+
+html:not([data-mam-off]) option {
+  background-color: var(--ctp-mantle) !important;
+  color: var(--ctp-text) !important;
+}

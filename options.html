@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MathAcademy Macchiato</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 360px;
+      background: #24273a;
+      color: #cad3f5;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      padding: 14px 16px 10px;
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #b7bdf8;
+      margin-bottom: 12px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 0;
+    }
+
+    .row label { flex: 1; }
+
+    .hint {
+      color: #a5adcb;
+      font-size: 11px;
+      margin: -2px 0 4px;
+    }
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #8aadf4;
+      cursor: pointer;
+    }
+
+    input[type="date"],
+    input[type="number"] {
+      background: #363a4f;
+      color: #cad3f5;
+      border: 1px solid #494d64;
+      border-radius: 4px;
+      padding: 4px 6px;
+      font: inherit;
+    }
+
+    input[type="date"] { color-scheme: dark; }
+
+    input[type="number"] { width: 62px; }
+
+    input:focus {
+      outline: none;
+      border-color: #8aadf4;
+    }
+
+    .thresholds {
+      display: flex;
+      gap: 8px;
+      padding: 6px 0 2px;
+    }
+
+    .thresholds > div { display: flex; flex-direction: column; gap: 3px; }
+
+    .thresholds span { font-size: 11px; color: #a5adcb; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #363a4f;
+      margin: 8px 0;
+    }
+
+    button {
+      background: #363a4f;
+      color: #cad3f5;
+      border: 1px solid #494d64;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:hover { border-color: #8aadf4; }
+
+    .flash {
+      color: #a6da95;
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity 0.25s;
+      white-space: nowrap;
+    }
+
+    .flash.show { opacity: 1; }
+
+    footer {
+      margin-top: 12px;
+      font-size: 10px;
+      color: #6e738d;
+    }
+  </style>
+</head>
+<body>
+  <h1>MathAcademy Macchiato</h1>
+
+  <div class="row">
+    <label for="mamTheme">Theme</label>
+    <span class="flash" data-flash="mamTheme">Saved</span>
+    <input type="checkbox" id="mamTheme">
+  </div>
+
+  <div class="row">
+    <label for="mamHeatmap">Heatmap</label>
+    <span class="flash" data-flash="mamHeatmap">Saved</span>
+    <input type="checkbox" id="mamHeatmap">
+  </div>
+
+  <div class="row">
+    <label for="mamHideXpFrame">Hide native weekly XP widget</label>
+    <span class="flash" data-flash="mamHideXpFrame">Saved</span>
+    <input type="checkbox" id="mamHideXpFrame">
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <label for="mamStartDate">Start date</label>
+    <span class="flash" data-flash="mamStartDate">Saved</span>
+    <input type="date" id="mamStartDate">
+  </div>
+  <p class="hint">Heatmap &amp; stats ignore XP before this date</p>
+
+  <div class="thresholds">
+    <div>
+      <span>Low</span>
+      <input type="number" id="mamThLow" min="1">
+    </div>
+    <div>
+      <span>Medium</span>
+      <input type="number" id="mamThMed" min="1">
+    </div>
+    <div>
+      <span>High</span>
+      <input type="number" id="mamThHigh" min="1">
+    </div>
+    <span class="flash" data-flash="thresholds" style="align-self: flex-end; padding-bottom: 6px;">Saved</span>
+  </div>
+  <p class="hint">XP needed for the 3 green levels</p>
+
+  <hr>
+
+  <div class="row">
+    <button id="clearCache">Clear activity cache</button>
+    <span class="flash" data-flash="clearCache">Cleared</span>
+  </div>
+
+  <footer>Heatmap ported from MA Grid (MIT, &copy; thaske)</footer>
+
+  <script src="options.js"></script>
+</body>
+</html>

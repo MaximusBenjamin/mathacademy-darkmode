@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "MathAcademy Macchiato",
+  "version": "0.1.0",
+  "description": "Catppuccin Macchiato theme, cleaner task cards, and a streak-aware activity heatmap for mathacademy.com",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://mathacademy.com/*", "https://www.mathacademy.com/*"],
+      "css": ["theme.css", "heatmap.css"],
+      "js": ["settings.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://mathacademy.com/*", "https://www.mathacademy.com/*"],
+      "js": ["app.js", "heatmap.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}
