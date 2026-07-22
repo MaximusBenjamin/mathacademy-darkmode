@@ -369,3 +369,62 @@ html:not([data-mam-off]) .taskDetails,
 html:not([data-mam-off]) .taskButtons {
   border-top-color: var(--ctp-surface0) !important;
 }
+
+/* -------------------------------------------------------- lesson player */
+
+html:not([data-mam-off]) #header {
+  background-color: var(--ctp-mantle) !important;
+  border-bottom: 1px solid var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) #steps {
+  background-color: var(--ctp-base) !important;
+}
+
+html:not([data-mam-off]) #bookmarkDialog {
+  background-color: var(--ctp-mantle) !important;
+  border-color: var(--ctp-surface0) !important;
+}
+
+html:not([data-mam-off]) .continueButton {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+/* step progress pips: unvisited / visited / current */
+html:not([data-mam-off]) .stepButton {
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) .stepButton.visited {
+  background-color: #5c6fa3 !important;
+  border-color: #5c6fa3 !important;
+}
+
+html:not([data-mam-off]) .stepButton.current {
+  background-color: var(--ctp-blue) !important;
+  border-color: var(--ctp-blue) !important;
+}
+
+html:not([data-mam-off]) #progressBarPreviousButton,
+html:not([data-mam-off]) #progressBarNextButton {
+  border-color: var(--ctp-overlay0) !important;
+}
+
+/* ------------------------------------------- prerequisite checkmarks */
+
+html:not([data-mam-off]) img.prerequisiteCheckmark {
+  display: none !important;
+}
+
+html:not([data-mam-off]) .taskPrerequisite::before {
+  content: "\2713\00A0\00A0";
+  color: var(--ctp-green);
+  font-weight: bold;
+}
+
+html:not([data-mam-off]) #progressBarPreviousButton,
+html:not([data-mam-off]) #progressBarNextButton {
+  background-color: var(--ctp-surface0) !important;
+}
