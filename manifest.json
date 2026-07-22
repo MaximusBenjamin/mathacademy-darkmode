@@ -17,6 +17,10 @@
       "run_at": "document_idle"
     }
   ],
+  "action": {
+    "default_popup": "options.html",
+    "default_title": "MathAcademy Macchiato settings"
+  },
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
