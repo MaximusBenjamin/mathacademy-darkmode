@@ -454,3 +454,14 @@ html:not([data-mam-off]) #progressBarPreviousButton[class$="Disabled"]::before,
 html:not([data-mam-off]) #progressBarNextButton[class$="Disabled"]::before {
   color: var(--ctp-surface2);
 }
+
+/* question widget submit button: enabled + disabled states */
+html:not([data-mam-off]) .questionWidget-submitButton {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+html:not([data-mam-off]) .questionWidget-submitButton.disabledButton {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-overlay0) !important;
+}
