@@ -84,20 +84,22 @@ html:not([data-mam-off]) #mam-heatmap {
 /* Stats */
 
 #mam-heatmap .mam-hm__stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(78px, 1fr));
-  gap: 8px;
+  /* Centered cluster with fixed gaps: grows toward the card edges as more
+     stats are enabled instead of stretching a few stats wall-to-wall. */
+  display: flex;
+  justify-content: center;
+  gap: 27px;
   margin-bottom: 14px;
 }
 
 #mam-heatmap .mam-hm__stat-value {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--ctp-text, #333333);
 }
 
 #mam-heatmap .mam-hm__stat-label {
-  font-size: 10px;
+  font-size: 11.5px;
   color: var(--ctp-subtext0, #6b6f7d);
   white-space: nowrap;
 }

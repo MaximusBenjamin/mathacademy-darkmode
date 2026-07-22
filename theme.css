@@ -198,12 +198,6 @@ html:not([data-mam-off]) [data-ma-type="assessment"] {
 
 /* ------------------------------------------------ site fixes: type badges */
 
-/* Direct-child first span only: the type label. Nested XP spans deeper in
- * the header must never grow a dot (the old descendant selector did that). */
-html:not([data-mam-off]) .taskHeader > span:first-of-type::before {
-  content: "\25CF\00A0 ";
-}
-
 html:not([data-mam-off]) [data-ma-type="lesson"] .taskHeader > span:first-of-type {
   color: var(--ctp-blue) !important;
 }
@@ -509,4 +503,29 @@ html:not([data-mam-off]) #progressDetails,
 html:not([data-mam-off]) #sequenceUnits,
 html:not([data-mam-off]) #leagueLevels {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Bold "current pace" row in the pace popup + sidebar date: mauve accent. */
+html:not([data-mam-off]) #estimatedCompletionDetails td[style*="bold"],
+html:not([data-mam-off]) #estimatedCompletion span {
+  color: var(--ctp-mauve) !important;
+}
+
+/* Flex the task header: whitespace text nodes (left by the hidden lock img)
+ * are not rendered as flex items, so the type label aligns exactly with the
+ * task title below; XP pins to the right edge. */
+html:not([data-mam-off]) .taskHeader {
+  display: flex !important;
+  align-items: center !important;
+}
+
+html:not([data-mam-off]) .taskHeader .taskPointsUnlocked,
+html:not([data-mam-off]) .taskHeader .taskPointsLocked {
+  margin-left: auto !important;
+}
+
+/* The 7px label margin existed to clear the (now hidden) lock icon. */
+html:not([data-mam-off]) .taskTypeUnlocked,
+html:not([data-mam-off]) .taskTypeLocked {
+  margin-left: 0 !important;
 }
