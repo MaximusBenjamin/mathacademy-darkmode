@@ -377,10 +377,10 @@
       statsStart = keys.length ? parseKey(keys[0]) : today;
     }
 
-    // Grid range: Monday of startDate's week, or trailing ~12 months (53 columns).
-    var gridStart = startDate
-      ? mondayOf(startDate)
-      : mondayOf(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 364));
+    // Grid range: always the full trailing ~12 months (53 columns), like MA Grid.
+    // mamStartDate only controls what counts: cells before it stay unhighlighted
+    // (daily{} above already excludes them) and stats start there.
+    var gridStart = mondayOf(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 364));
     // Extend through Sunday of the current week so the last column is complete
     // (perfect rectangle, like MA Grid) — future days render as empty cells.
     var totalDays = Math.round((today - gridStart) / DAY_MS) + 1;

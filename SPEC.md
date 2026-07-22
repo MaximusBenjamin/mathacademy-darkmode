@@ -19,7 +19,7 @@ MV3 extension, plain JS/CSS, no build step, loaded unpacked. All files at repo r
 |----------------|---------|----------------------------------------------------|
 | mamTheme       | true    | apply theme.css                                    |
 | mamHeatmap     | true    | render heatmap on /learn                           |
-| mamStartDate   | ""      | ISO `yyyy-mm-dd`; heatmap/stats ignore days before |
+| mamStartDate   | ""      | ISO `yyyy-mm-dd`; stats ignore days before it and earlier cells render unhighlighted — the grid itself always spans the trailing 12 months |
 | mamThLow       | 1       | XP >= this → level 1 cell                          |
 | mamThMed       | 15      | XP >= this → level 2 cell                          |
 | mamThHigh      | 30      | XP >= this → level 3 cell                          |
