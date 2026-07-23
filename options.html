@@ -46,7 +46,8 @@
     }
 
     input[type="date"],
-    input[type="number"] {
+    input[type="number"],
+    select {
       background: #363a4f;
       color: #cad3f5;
       border: 1px solid #494d64;
@@ -59,7 +60,10 @@
 
     input[type="number"] { width: 62px; }
 
-    input:focus {
+    select { cursor: pointer; }
+
+    input:focus,
+    select:focus {
       outline: none;
       border-color: #8aadf4;
     }
@@ -136,9 +140,27 @@
   </div>
 
   <div class="row">
+    <label for="mamPalette">Palette</label>
+    <span class="flash" data-flash="mamPalette">Saved</span>
+    <select id="mamPalette">
+      <option value="macchiato">Macchiato</option>
+      <option value="fusion">Fusion Gray</option>
+    </select>
+  </div>
+
+  <div class="row">
     <label for="mamHeatmap">Heatmap</label>
     <span class="flash" data-flash="mamHeatmap">Saved</span>
     <input type="checkbox" id="mamHeatmap">
+  </div>
+
+  <div class="row">
+    <label for="mamHeatmapSide">Heatmap position</label>
+    <span class="flash" data-flash="mamHeatmapSide">Saved</span>
+    <select id="mamHeatmapSide">
+      <option value="right">Main feed</option>
+      <option value="left">Sidebar</option>
+    </select>
   </div>
 
   <div class="row">

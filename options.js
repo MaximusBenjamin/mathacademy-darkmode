@@ -4,7 +4,9 @@
 
   var DEFAULTS = {
     mamTheme: true,
+    mamPalette: 'macchiato',
     mamHeatmap: true,
+    mamHeatmapSide: 'right',
     mamStartDate: '',
     mamThLow: 1,
     mamThMed: 15,
@@ -48,6 +50,13 @@
     });
   }
 
+  function bindSelect(key) {
+    var el = document.getElementById(key);
+    el.addEventListener('change', function () {
+      save(key, el.value);
+    });
+  }
+
   // Clamp the edited threshold so 1 <= low <= med <= high always holds, fixing
   // only the key the user touched; the corrected value is written back to the
   // input so they see what was actually saved.
@@ -69,7 +78,9 @@
     current = settings;
 
     document.getElementById('mamTheme').checked = settings.mamTheme;
+    document.getElementById('mamPalette').value = settings.mamPalette;
     document.getElementById('mamHeatmap').checked = settings.mamHeatmap;
+    document.getElementById('mamHeatmapSide').value = settings.mamHeatmapSide;
     document.getElementById('mamHideXpFrame').checked = settings.mamHideXpFrame;
     document.getElementById('mamStartDate').value = settings.mamStartDate;
     document.getElementById('mamThLow').value = settings.mamThLow;
@@ -77,7 +88,9 @@
     document.getElementById('mamThHigh').value = settings.mamThHigh;
 
     bindCheckbox('mamTheme');
+    bindSelect('mamPalette');
     bindCheckbox('mamHeatmap');
+    bindSelect('mamHeatmapSide');
     bindCheckbox('mamHideXpFrame');
     bindThreshold('mamThLow');
     bindThreshold('mamThMed');

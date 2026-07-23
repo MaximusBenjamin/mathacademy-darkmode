@@ -6,6 +6,7 @@
   var DEFAULTS = {
     mamTheme: true,
     mamHeatmap: true,
+    mamHeatmapSide: 'right',
     mamStartDate: '',
     mamThLow: 1,
     mamThMed: 15,
@@ -447,6 +448,13 @@
     STAT_DEFS.forEach(function (def) {
       els.statRoots[def[0]].style.display = shown[def[0]] === false ? 'none' : '';
     });
+
+    // In the narrow sidebar the full-year grid overflows and scrolls; start it
+    // at the right edge so the most recent weeks (and today) are visible.
+    if (root.classList.contains('mam-hm--sidebar')) {
+      var wrapEl = root.querySelector('.mam-hm__wrap');
+      if (wrapEl) wrapEl.scrollLeft = wrapEl.scrollWidth;
+    }
   }
 
   // ---------- sync + render ----------
@@ -486,18 +494,49 @@
     els = null;
   }
 
+  // Where the card mounts, per the mamHeatmapSide setting:
+  //   'right' → top of the task feed (#incompleteTasks), the default.
+  //   'left'  → into the sidebar (#sidebar), right after the course-progress
+  //             box (#courseFrame) — MA Grid's "sidebar" placement. The card's
+  //             max-width:100% lets it shrink to the ~350px column; the grid
+  //             wrap keeps full-size cells and scrolls horizontally.
+  function anchorFor(side) {
+    return side === 'left'
+      ? document.getElementById('sidebar')
+      : document.getElementById('incompleteTasks');
+  }
+
+  function sideOf(s) {
+    return (s || settings()).mamHeatmapSide === 'left' ? 'left' : 'right';
+  }
+
+  function mountInto(anchor, side) {
+    buildRoot();
+    if (side === 'left') {
+      root.classList.add('mam-hm--sidebar');
+      var courseFrame = document.getElementById('courseFrame');
+      if (courseFrame && courseFrame.parentElement === anchor) {
+        anchor.insertBefore(root, courseFrame.nextSibling);
+      } else {
+        anchor.insertBefore(root, anchor.firstChild);
+      }
+    } else {
+      anchor.insertBefore(root, anchor.firstChild);
+    }
+  }
+
   function tryMount() {
     if (location.pathname !== '/learn' || !settings().mamHeatmap) {
       unmount();
       return;
     }
-    if (root && root.parentElement) return;
-    var anchor = document.getElementById('incompleteTasks');
+    var side = sideOf();
+    var anchor = anchorFor(side);
     if (!anchor) return;
+    if (root && root.parentElement === anchor) return; // already in place
 
-    unmount(); // clear any stale node from a previous injection
-    buildRoot();
-    anchor.insertBefore(root, anchor.firstChild);
+    unmount(); // clear any stale node (incl. one left in the other column)
+    mountInto(anchor, side);
 
     // Render from cache immediately, then incremental-sync and re-render.
     store.get(ACT_KEY).then(function (cached) {
@@ -512,8 +551,9 @@
       unmount();
       return;
     }
-    if (root && root.parentElement) render();
-    else tryMount();
+    // Same column → just re-render (stat toggles, thresholds, start date).
+    if (root && root.parentElement === anchorFor(sideOf())) { render(); return; }
+    tryMount(); // side changed or not yet mounted → (re)mount in the right spot
   }
 
   function init() {
@@ -522,9 +562,9 @@
     tryMount();
     if (root) return;
 
-    // #incompleteTasks not in the DOM yet: watch for it (bounded).
+    // Anchor (#incompleteTasks or #sidebar) not in the DOM yet: watch (bounded).
     var observer = new MutationObserver(function () {
-      if (document.getElementById('incompleteTasks')) {
+      if (anchorFor(sideOf())) {
         tryMount();
         if (root) observer.disconnect();
       }

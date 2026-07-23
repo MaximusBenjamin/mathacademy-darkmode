@@ -5,7 +5,9 @@
 
   var DEFAULTS = {
     mamTheme: true,
+    mamPalette: 'macchiato',
     mamHeatmap: true,
+    mamHeatmapSide: 'right',
     mamStartDate: '',
     mamThLow: 1,
     mamThMed: 15,
@@ -21,6 +23,8 @@
     var html = document.documentElement;
     if (settings.mamTheme) html.removeAttribute('data-mam-off');
     else html.setAttribute('data-mam-off', '');
+    if (settings.mamPalette === 'fusion') html.setAttribute('data-mam-palette', 'fusion');
+    else html.removeAttribute('data-mam-palette');
     if (settings.mamHideXpFrame) html.setAttribute('data-mam-hide-xp', '');
     else html.removeAttribute('data-mam-hide-xp');
     window.__mamSettings = settings;

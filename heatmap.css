@@ -35,6 +35,13 @@ html:not([data-mam-off]) #mam-heatmap {
   box-sizing: border-box;
 }
 
+/* Sidebar (left) placement: fill the ~350px column instead of the 685px card
+   width. The grid wrap already scrolls horizontally, so the full year stays
+   reachable at full cell size. */
+#mam-heatmap.mam-hm--sidebar {
+  width: 100%;
+}
+
 /* Header */
 
 #mam-heatmap .mam-hm__header {

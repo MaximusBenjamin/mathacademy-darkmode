@@ -28,6 +28,22 @@ html:not([data-mam-off]) {
   color-scheme: dark;
 }
 
+/* -------------------------------------------------- alternate palettes */
+/* The whole theme resolves through the --ctp-* variables above, so a new
+ * theme is just a variable-block override. "Fusion Gray" neutralises the 7
+ * grey tones (backgrounds / surfaces / borders) to Autodesk Fusion's flat
+ * #2a2a2a family and leaves every text + accent colour Catppuccin. Gated on
+ * data-mam-palette, which settings.js stamps from the mamPalette setting. */
+html:not([data-mam-off])[data-mam-palette="fusion"] {
+  --ctp-crust:    #232323;
+  --ctp-mantle:   #2a2a2a;
+  --ctp-base:     #303030;
+  --ctp-surface0: #383838;
+  --ctp-surface1: #454545;
+  --ctp-surface2: #565656;
+  --ctp-overlay0: #6e6e6e;
+}
+
 /* ------------------------------------------------------------ backgrounds */
 
 /* Page surfaces: mantle everywhere (the darker overall look). */
@@ -604,17 +620,25 @@ html:not([data-mam-off]) .questionHeader {
   border-bottom-color: var(--ctp-surface0) !important;
 }
 
-/* The site marks semantic state with inline color:green/red (e.g. the
- * Correct/Incorrect verdicts on review pages); our blanket text rule was
- * flattening them. Re-map to the palette. */
-html:not([data-mam-off]) span[style*="color: green"],
-html:not([data-mam-off]) div[style*="color: green"] {
-  color: var(--ctp-green) !important;
+/* The site marks semantic state with inline color (Correct/Incorrect verdicts
+ * on review pages) AND colours worked-example numbers inside lessons via
+ * MathJax \color{red|blue|green}, which renders as inline color on <mjx-mstyle>
+ * — NOT span/div, so the old span/div-only rules missed every lesson. Pure
+ * red is harsh and pure blue (#0000FF) is nearly invisible on dark. Match any
+ * element and re-map to the lighter palette accents. */
+html:not([data-mam-off]) [style*="color: red"],
+html:not([data-mam-off]) [style*="color:red"] {
+  color: var(--ctp-red) !important;
 }
 
-html:not([data-mam-off]) span[style*="color: red"],
-html:not([data-mam-off]) div[style*="color: red"] {
-  color: var(--ctp-red) !important;
+html:not([data-mam-off]) [style*="color: blue"],
+html:not([data-mam-off]) [style*="color:blue"] {
+  color: var(--ctp-blue) !important;
+}
+
+html:not([data-mam-off]) [style*="color: green"],
+html:not([data-mam-off]) [style*="color:green"] {
+  color: var(--ctp-green) !important;
 }
 
 /* --------------------------------------------- math input (MathQuill) */
@@ -991,5 +1015,43 @@ html:not([data-mam-off]) [bgcolor] {
 html:not([data-mam-off]) .step table,
 html:not([data-mam-off]) .step table td,
 html:not([data-mam-off]) .step table th {
+  border-color: var(--ctp-surface1) !important;
+}
+
+/* ------------------------------------------------- settings dialogs */
+
+/* The account/settings modals (Configure Course, Reset Course, Add Student,
+ * XP Goals…) are styled per-ID with no shared class, so match the id suffix.
+ * Their surfaces shipped white; their divider rows use a light-grey border. */
+html:not([data-mam-off]) [id$="Dialog"],
+html:not([data-mam-off]) #accountsMenu,
+html:not([data-mam-off]) #topMenu {
+  background-color: var(--ctp-mantle) !important;
+  border-color: var(--ctp-surface0) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+html:not([data-mam-off]) [class*="settingFrame"] {
+  border-color: var(--ctp-surface0) !important;
+}
+
+/* Dialog buttons are <button> elements, but the earlier button rules only
+ * matched div[id$="-cancelButton"] — broaden to any tag and cover save/yes. */
+html:not([data-mam-off]) [id$="-cancelButton"],
+html:not([data-mam-off]) [id$="-noButton"] {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+  border: 1px solid var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) [id$="-saveButton"],
+html:not([data-mam-off]) [id$="-yesButton"] {
+  background-color: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+html:not([data-mam-off]) button.buttonDisabled {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-overlay0) !important;
   border-color: var(--ctp-surface1) !important;
 }
