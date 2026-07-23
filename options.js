@@ -5,6 +5,7 @@
   var DEFAULTS = {
     mamTheme: true,
     mamPalette: 'macchiato',
+    mamText: 'catppuccin',
     mamHeatmap: true,
     mamHeatmapSide: 'right',
     mamStartDate: '',
@@ -79,6 +80,7 @@
 
     document.getElementById('mamTheme').checked = settings.mamTheme;
     document.getElementById('mamPalette').value = settings.mamPalette;
+    document.getElementById('mamText').value = settings.mamText;
     document.getElementById('mamHeatmap').checked = settings.mamHeatmap;
     document.getElementById('mamHeatmapSide').value = settings.mamHeatmapSide;
     document.getElementById('mamHideXpFrame').checked = settings.mamHideXpFrame;
@@ -89,6 +91,7 @@
 
     bindCheckbox('mamTheme');
     bindSelect('mamPalette');
+    bindSelect('mamText');
     bindCheckbox('mamHeatmap');
     bindSelect('mamHeatmapSide');
     bindCheckbox('mamHideXpFrame');

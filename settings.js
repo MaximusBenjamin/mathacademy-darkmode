@@ -6,6 +6,7 @@
   var DEFAULTS = {
     mamTheme: true,
     mamPalette: 'macchiato',
+    mamText: 'catppuccin',
     mamHeatmap: true,
     mamHeatmapSide: 'right',
     mamStartDate: '',
@@ -25,6 +26,8 @@
     else html.setAttribute('data-mam-off', '');
     if (settings.mamPalette === 'fusion') html.setAttribute('data-mam-palette', 'fusion');
     else html.removeAttribute('data-mam-palette');
+    if (settings.mamText === 'white' || settings.mamText === 'warm') html.setAttribute('data-mam-text', settings.mamText);
+    else html.removeAttribute('data-mam-text');
     if (settings.mamHideXpFrame) html.setAttribute('data-mam-hide-xp', '');
     else html.removeAttribute('data-mam-hide-xp');
     window.__mamSettings = settings;

@@ -44,6 +44,19 @@ html:not([data-mam-off])[data-mam-palette="fusion"] {
   --ctp-overlay0: #6e6e6e;
 }
 
+/* Text-colour options (independent of palette): the default Catppuccin "Text"
+ * (#cad3f5) is cool/lavender-tinted; these neutralise it. Only the two text
+ * tones change — every accent stays. Stamped via data-mam-text from mamText. */
+html:not([data-mam-off])[data-mam-text="white"] {
+  --ctp-text:     #e8e8ea;  /* neutral near-white */
+  --ctp-subtext0: #b4b4b4;
+}
+
+html:not([data-mam-off])[data-mam-text="warm"] {
+  --ctp-text:     #e9e1d0;  /* warm ivory, low blue-light */
+  --ctp-subtext0: #b7ad98;
+}
+
 /* ------------------------------------------------------------ backgrounds */
 
 /* Page surfaces: mantle everywhere (the darker overall look). */
@@ -631,9 +644,28 @@ html:not([data-mam-off]) [style*="color:red"] {
   color: var(--ctp-red) !important;
 }
 
+/* Lesson blue → the palette blue (--ctp-blue #8aadf4), the same shade as the
+ * section headers and sidebar links, so the emphasis is consistent site-wide.
+ * (This color rule only reaches non-SVG inline-styled text; the visible math
+ * is handled by the fill rule below.) */
 html:not([data-mam-off]) [style*="color: blue"],
 html:not([data-mam-off]) [style*="color:blue"] {
   color: var(--ctp-blue) !important;
+}
+
+/* IMPORTANT: lesson math is pre-rendered SERVER-SIDE to SVG (mathjax-node-page,
+ * wrapped in .mjpage), so \color{} emphasis is an SVG fill="blue|green|…"
+ * attribute — the color rules above only reach MathJax's hidden CHTML copies
+ * and never touched the visible glyphs. Override the SVG fill directly, scoped
+ * to .mjpage so the mastery-map graph and other SVGs are untouched. Red is left
+ * as the site's own bright red (reads fine on dark); blue #0000FF and green
+ * #008000 are too dark, so they take the palette blue/green. */
+html:not([data-mam-off]) .mjpage [fill="blue"] {
+  fill: var(--ctp-blue) !important;
+}
+
+html:not([data-mam-off]) .mjpage [fill="green"] {
+  fill: var(--ctp-green) !important;
 }
 
 html:not([data-mam-off]) [style*="color: green"],
@@ -1024,8 +1056,7 @@ html:not([data-mam-off]) .step table th {
  * XP Goals…) are styled per-ID with no shared class, so match the id suffix.
  * Their surfaces shipped white; their divider rows use a light-grey border. */
 html:not([data-mam-off]) [id$="Dialog"],
-html:not([data-mam-off]) #accountsMenu,
-html:not([data-mam-off]) #topMenu {
+html:not([data-mam-off]) #accountsMenu {
   background-color: var(--ctp-mantle) !important;
   border-color: var(--ctp-surface0) !important;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
