@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "MathAcademy Macchiato",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Catppuccin Macchiato theme, cleaner task cards, and a streak-aware activity heatmap for mathacademy.com",
   "permissions": ["storage"],
   "content_scripts": [
