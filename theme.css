@@ -322,10 +322,22 @@ html:not([data-mam-off]) #courseDialog {
   border-color: var(--ctp-surface0) !important;
 }
 
-html:not([data-mam-off]) #sequenceUnits td,
 html:not([data-mam-off]) #progressDetails td,
 html:not([data-mam-off]) #estimatedCompletionDetails td {
   background-color: transparent !important;
+}
+
+/* Section progress bars in the course-hover dropdown (#sequenceUnits) and the
+ * course sequence view. Each bar is a <table.courseUnitProgressBar> of <td>
+ * segments coloured inline with MathAcademy's blue mastery ramp, plus a white
+ * "unstarted" cell and a light-grey 1px track border. The blue ramp reads fine
+ * on dark, but on a 4px bar the light border + white cell dominate and the bar
+ * looks like an empty white outline. Tone just those two; keep the ramp. */
+html:not([data-mam-off]) .courseUnitProgressBar {
+  border-color: var(--ctp-surface1) !important;
+}
+html:not([data-mam-off]) .courseUnitProgressBar td[style*="background-color: white"] {
+  background-color: var(--ctp-surface0) !important;
 }
 
 html:not([data-mam-off]) .helpMenu-item,
