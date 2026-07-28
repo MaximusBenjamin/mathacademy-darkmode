@@ -307,6 +307,29 @@ html:not([data-mam-off]) option {
   color: var(--ctp-text) !important;
 }
 
+/* MathAcademy's answer dropdowns are custom divs, not native selects. When a
+ * dropdown opens, .selectListOptions is moved directly under <body>, where
+ * the site's select-list.css gives it an explicit white background. */
+html:not([data-mam-off]) .selectListFrame,
+html:not([data-mam-off]) .selectListFrameDisabled {
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) .selectListFrame:hover {
+  background-color: var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) .selectListOptions {
+  background: var(--ctp-mantle) !important;
+  border-color: var(--ctp-surface1) !important;
+}
+
+html:not([data-mam-off]) .selectListOption:hover,
+html:not([data-mam-off]) .selectListOption.selected {
+  background-color: var(--ctp-surface1) !important;
+}
+
 /* ------------------------------------------- hover popups, menus, dialogs */
 
 html:not([data-mam-off]) #sequenceUnits,
@@ -371,7 +394,9 @@ html:not([data-mam-off]) #progressBarFrame {
   background-color: var(--ctp-surface0) !important;
   border-color: var(--ctp-surface1) !important;
 }
-html:not([data-mam-off]) #progressBar {
+/* Scope this to diagnostics: lesson pages reuse #progressBar for the entire
+ * header strip, so a bare selector paints the strip blue. */
+html:not([data-mam-off]) #progressBarFrame #progressBar {
   background-color: var(--ctp-blue) !important;
 }
 
@@ -707,6 +732,14 @@ html:not([data-mam-off]) [style*="color:blue"] {
   color: var(--ctp-blue) !important;
 }
 
+/* Worked-answer explanations use MathJax's \bbox with a Gainsboro background.
+ * MathJax converts that to an inline background on <mjx-mstyle>, which stays
+ * light unless it is explicitly remapped for the dark theme. */
+html:not([data-mam-off]) mjx-mstyle[style*="background-color: gainsboro" i],
+html:not([data-mam-off]) mstyle[mathbackground="gainsboro" i] {
+  background-color: var(--ctp-surface0) !important;
+}
+
 /* IMPORTANT: lesson math is pre-rendered SERVER-SIDE to SVG (mathjax-node-page,
  * wrapped in .mjpage), so \color{} emphasis is an SVG fill="blue|green|…"
  * attribute — the color rules above only reach MathJax's hidden CHTML copies
@@ -720,6 +753,22 @@ html:not([data-mam-off]) .mjpage [fill="blue"] {
 
 html:not([data-mam-off]) .mjpage [fill="green"] {
   fill: var(--ctp-green) !important;
+}
+
+/* Non-emphasized lesson glyphs are fill="currentColor" and follow the light body
+ * text, but bold vectors, plain numbers, fraction bars, etc. ship as an explicit
+ * fill="black" — literal black, invisible on dark. Remap to the body text colour
+ * so they read like the rest of the math. Scoped to .mjpage (the #graph mastery
+ * map has its own black-text rule). */
+html:not([data-mam-off]) .mjpage [fill="black"] {
+  fill: var(--ctp-text) !important;
+}
+
+/* Worked-example highlight boxes (\bbox) render as an SVG <rect fill="lightgray">
+ * behind the emphasized glyph — a bright box on the dark page. Remap to a surface
+ * tone so it still reads as a highlight but sits in the palette. */
+html:not([data-mam-off]) .mjpage rect[fill="lightgray"] {
+  fill: var(--ctp-surface2) !important;
 }
 
 html:not([data-mam-off]) [style*="color: green"],
