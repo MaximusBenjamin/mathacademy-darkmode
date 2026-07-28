@@ -351,6 +351,48 @@ html:not([data-mam-off]) div[id$="-cancelButton"]:hover {
   background-color: var(--ctp-surface0) !important;
 }
 
+/* ------------------------------------ diagnostic / placement exam view */
+/* The full-screen diagnostic (/tasks/{id}/diagnostics/{id}) has its own card
+ * chrome that the generic rules don't cover, so text-colour rules ran but the
+ * card stayed white -> pale text on white. Dark the containers; the exam's math
+ * is client-side MathJax CHTML (uses currentColor, already themed) — unlike
+ * lessons' server-rendered .mjpage SVG, so no fill override is needed here. */
+html:not([data-mam-off]) #topRibbon,
+html:not([data-mam-off]) #questionAnswerContainer,
+html:not([data-mam-off]) #initialScreen,
+html:not([data-mam-off]) #retryScreen {
+  background-color: var(--ctp-base) !important;
+}
+html:not([data-mam-off]) #questionContainer {
+  background-color: var(--ctp-mantle) !important;
+  border-color: var(--ctp-surface0) !important;
+}
+html:not([data-mam-off]) #progressBarFrame {
+  background-color: var(--ctp-surface0) !important;
+  border-color: var(--ctp-surface1) !important;
+}
+html:not([data-mam-off]) #progressBar {
+  background-color: var(--ctp-blue) !important;
+}
+
+/* Answer-choice letter circles: quiet border unselected; the selected one is
+ * marked by an inline `background: rgb(64,64,64)` -> recolour to the accent. */
+html:not([data-mam-off]) .questionWidget-choiceLetterCircle {
+  border-color: var(--ctp-surface1) !important;
+}
+html:not([data-mam-off]) .questionWidget-choiceLetterCircle[style*="64, 64, 64"] {
+  background: var(--ctp-blue) !important;
+  color: var(--ctp-crust) !important;
+}
+
+/* "Don't Know" skip button (white ghost by default). Submit/Next/Done already
+ * pick up the generic accent-button rules. */
+html:not([data-mam-off]) .questionWidget-skipButton {
+  background-color: var(--ctp-surface0) !important;
+  color: var(--ctp-text) !important;
+  border-color: var(--ctp-surface1) !important;
+}
+
 /* --------------------------------------------------- sidebar as cards */
 
 html:not([data-mam-off]) .sidebarFrame {
