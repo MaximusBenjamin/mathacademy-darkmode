@@ -757,11 +757,13 @@ html:not([data-mam-off]) .mjpage [fill="green"] {
 
 /* Non-emphasized lesson glyphs are fill="currentColor" and follow the light body
  * text, but bold vectors, plain numbers, fraction bars, etc. ship as an explicit
- * fill="black" — literal black, invisible on dark. Remap to the body text colour
- * so they read like the rest of the math. Scoped to .mjpage (the #graph mastery
- * map has its own black-text rule). */
+ * fill="black" — literal black, invisible on dark. These are the author's default
+ * emphasis (alongside the red/blue component colours), so give them a distinct
+ * gold rather than the plain body colour, which would blend into the prose. Yellow
+ * over peach: peach is too close to the lesson red. Scoped to .mjpage (the #graph
+ * mastery map has its own black-text rule). */
 html:not([data-mam-off]) .mjpage [fill="black"] {
-  fill: var(--ctp-text) !important;
+  fill: var(--ctp-yellow) !important;
 }
 
 /* Worked-example highlight boxes (\bbox) render as an SVG <rect fill="lightgray">
