@@ -1191,3 +1191,36 @@ html:not([data-mam-off]) button.buttonDisabled {
   color: var(--ctp-overlay0) !important;
   border-color: var(--ctp-surface1) !important;
 }
+
+html:not([data-mam-off]) .calcw[data-skin="edu-square"] {
+	/* keys */
+	--calc-key: var(--ctp-mantle) !important;
+	--calc-key-fg: var(--ctp-text) !important;
+	--calc-key-edge: var(--ctp-surface1) !important;
+	--calc-key-active: var(--ctp-mantle) !important;
+	--calc-warn-fg: var(--ctp-red) !important;
+	--calc-fn: var(--ctp-mantle) !important;
+	--calc-fn-fg:  var(--ctp-text) !important;
+	--calc-key-hover: var(--ctp-surface1) !important;
+	--calc-op: var(--ctp-mantle) !important;
+	--calc-op-fg: var(--ctp-blue) !important;
+	--calc-eq-fg: var(--ctp-text) !important;
+	--calc-eq-hover: var(--ctp-surface1) !important;
+	--calc-eq-active: var(--ctp-mantle) !important;
+	--calc-key-active-fg: var(--ctp-text) !important;
+    /* Backgrounds, Shell, borders */
+    --calc-shell: var(--ctp-mantle) !important;
+    --calc-chrome: var(--ctp-base) !important;
+    --calc-screen: var(--ctp-crust) !important;
+	--calc-shell-edge: var(--ctp-crust) !important;
+	border: var(--ctp-surface1) solid;
+	--calc-shadow: none !important; 
+    /* Text and Fonts */
+    --calc-title-fg: var(--ctp-text) !important;
+}
+html:not([data-mam-off]) .calcw[data-skin="edu-square"] .calcw__key--num {
+	/* nums font */
+    font-weight: 600 !important;
+    --calc-key-fg: var(--ctp-text) !important;
+    color: var(--ctp-text) !important;
+}
